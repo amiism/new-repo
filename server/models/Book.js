@@ -5,22 +5,28 @@ const BookSchema = new mongoose.Schema({
       type: String,
       required: true
     },
-    isbn: {
-      type: String,
+    price: {
+      type: Number,
       required: true
     },
-    author: {
+    condition: {
       type: String,
       required: true
     },
     description: {
       type: String
     },
-    published_date: {
-      type: Date
+    availabiliy_status: {
+      type: String,
+      required: true
     },
-    publisher: {
-      type: String
+    payment: {
+      type: String,
+      required: true
+    },
+    shipping: {
+      type: String,
+      required: true
     },
     updated_date: {
       type: Date,
