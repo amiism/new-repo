@@ -9,8 +9,7 @@ const PORT = process.env.PORT || 8000;
 
 const routes = require("./api");
 
-const MONGODB_URI =
-  "mongodb+srv://amiism:test1234@cluster0.afehz.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+
 
 mongoose.connect(MONGODB_URI, {
   useNewUrlParser: true,
