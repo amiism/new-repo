@@ -41,7 +41,7 @@ const SideNavBar = () => {
           </SidebarHeader>
           <SidebarContent>
             <Menu iconShape="round">
-            <Link style={{ textDecoration: 'none' }} to="/"><MenuItem active={true} icon={<FiHome />}>Home</MenuItem></Link>
+            <Link style={{ textDecoration: 'none' }} to="/main"><MenuItem active={true} icon={<FiHome />}>Home</MenuItem></Link>
             </Menu>
           </SidebarContent>
           <SidebarFooter>

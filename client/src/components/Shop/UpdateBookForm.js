@@ -56,7 +56,7 @@ class UpdateBookForm extends Component {
     };
 
     axios
-      .put('http://localhost:5000/api/books/'+this.props.match.params.id, data)
+      .put('http://localhost:5000/api/books/'+ this.props.match.params.id, data)
       .then(res => {
         this.props.history.push('/shop/show-book/'+this.props.match.params.id);
       })
