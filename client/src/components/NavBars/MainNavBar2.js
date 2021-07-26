@@ -37,7 +37,7 @@ export default function CenteredTabs() {
       <Tabs value={value} className={classes.tabnav} onChange={handleChange} centered >
         <Tab label="Forum" className={classes.inditab} icon={<ForumRounded />} component={Link} to="/forum"/>
         <Tab label="Shop" className={classes.inditab} icon={<StoreRounded />} component={Link} to="/shop"/>
-        <Tab label="Job" className={classes.inditab} icon={<WorkRounded />} component={Link} to="/job"/>
+        {/*<Tab label="Job" className={classes.inditab} icon={<WorkRounded />} component={Link} to="/job"/>*/}
       </Tabs>
     </Paper>
   );

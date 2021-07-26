@@ -1,42 +1,47 @@
 import React, { Component } from 'react';
 import './Shop.css';
+import { connect } from "react-redux";
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import Book from './Book';
 import { Button } from '@material-ui/core';
+import {getBooks} from '../../actions/books';
 
 class DisplayBookList extends Component {
+  
   constructor(props) {
     super(props);
-    this.state = {
-      books: []
-    };
+    
   }
-
+  
   componentDidMount() {
+    this.props.getBooks();
+    /*
     axios
-      .get('http://localhost:5000/api/books')
+      .get('/api/books')
       .then(res => {
         this.setState({
           books: res.data
         })
+        console.log('data fetched');
       })
       .catch(err =>{
         console.log('Error from ShowBookList');
       })
+    */
   };
 
   render() {
-    const books = this.state.books;
-    console.log("PrintBook: " + books);
-    let bookList;
 
+    //const books = this.state.books;
+    console.log("PrintBook: " + this.props.books);
+    let bookList;
     
-    if(!books.length) {
+    if(!this.props.books.length) {
       bookList = "there is no book being sold!, start by sell ur textbks/notes here!";
       console.log("no books");
     } else {
-      bookList = books.map((book, k) =>
+      bookList = this.props.books.map((book, k) =>
         <Book book={book} key={k} />
       );
     }
@@ -65,4 +70,10 @@ class DisplayBookList extends Component {
   }
 }
 
-export default DisplayBookList;
+function mapStateToProps(state) {
+  return { books: state.books };
+}
+
+export default connect(mapStateToProps, {
+  getBooks,
+})(DisplayBookList);

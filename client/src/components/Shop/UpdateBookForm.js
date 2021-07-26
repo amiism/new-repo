@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+import { connect } from "react-redux";
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import './Shop.css';
+import { getOneBook, updateBook } from '../../actions/books';
 
 class UpdateBookForm extends Component {
   constructor(props) {
@@ -19,25 +21,41 @@ class UpdateBookForm extends Component {
 
   componentDidMount() {
     // console.log("Print id: " + this.props.match.params.id);
+    const { id } = this.props.match.params;
+    
+    if(!this.props.book){
+      this.props.getOneBook(id);
+      console.log('book contain '+this.props.book);
+    }
+    
+    //console.log('update book has '+ this.props.book);
+    
+    this.setState({
+      title: this.props.book.title,
+      price: this.props.book.price,
+      condition: this.props.book.condition,
+      description: this.props.book.description,
+      availabiliy_status: this.props.book.availabiliy_status,
+      payment: this.props.book.payment,
+      shipping: this.props.book.shipping
+    });
+    
+    /*
     axios
       .get('http://localhost:5000/api/books/'+this.props.match.params.id)
       .then(res => {
         // this.setState({...this.state, book: res.data})
         this.setState({
-          title: res.data.title,
-          price: res.data.price,
-          condition: res.data.condition,
-          description: res.data.description,
-          availabiliy_status: res.data.availabiliy_status,
-          payment: res.data.payment,
-          shipping: res.data.shipping
+          
         })
       })
       .catch(err => {
         console.log("Error from UpdateBookInfo");
       })
+    */ 
   };
 
+  
   onChange = e => {
     this.setState({ [e.target.name]: e.target.value });
   };
@@ -54,19 +72,29 @@ class UpdateBookForm extends Component {
       payment: this.state.payment,
       shipping: this.state.shipping
     };
+    console.log('title change' + this.state.title);
 
+    this.props.updateBook(this.props.match.params.id, data)
+    .then(res => {
+      this.props.history.push('/shop/show-book/' + this.props.match.params.id);
+    });
+    /*
     axios
-      .put('http://localhost:5000/api/books/'+ this.props.match.params.id, data)
+      .put('http://localhost:5000/api/books/'+ )
       .then(res => {
-        this.props.history.push('/shop/show-book/'+this.props.match.params.id);
+        this.props.history.push('/shop/show-book/' + this.props.match.params.id);
       })
       .catch(err => {
         console.log("Error in UpdateBookInfo!");
       })
+      */
+      
   };
-
-
+  
   render() {
+    if(!this.props.book){
+      return (<div><h2>loading</h2></div>);
+    }
     return (
       <div className="UpdateBookInfo">
         <div className="container">
@@ -180,4 +208,12 @@ class UpdateBookForm extends Component {
   }
 }
 
-export default UpdateBookForm;
+function mapStateToProps({books}, ownProps) {
+  return {     
+    book: books[ownProps.match.params.id],
+  };
+}
+
+export default connect(mapStateToProps, { 
+  getOneBook,updateBook 
+})(UpdateBookForm);

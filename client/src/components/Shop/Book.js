@@ -31,6 +31,7 @@ const useStyles = makeStyles(() => ({
 const Book = (props) => {
     const book = props.book;
     const classes = useStyles();
+    console.log(book._id);
 
     return(
         <div className="card-container">
@@ -45,40 +46,40 @@ const Book = (props) => {
                 <p>{book.description}</p>
             </div>*/}
             
-            <Link to={`/shop/show-book/${book._id}`} style={{ textDecoration: 'none' }}>
-                <Card className={classes.root}>
-                    <CardHeader
-                        avatar={
-                            <Avatar aria-label="recipe" className={classes.avatar}>
-                            r
-                            </Avatar>
-                        }
-                        title="Seller: "
-                        subheader="timestamp: "
-                    />
-                    <CardMedia
-                        className={classes.media}
-                        image="https://commapress.co.uk/books/the-book-of-cairo/cairo-provisional-v3/image%2Fspan3"
-                        title={ book.title }
-                    />
-                    <CardContent>
-                        <Typography variant="body2" color="textSecondary" component="p">
-                            Title: {book.title}
-                        </Typography>
-                        <Typography variant="body2" color="textSecondary" component="p">
-                            Price: {book.price}
-                        </Typography>
-                        <Typography variant="body2" color="textSecondary" component="p">
-                            Condition: { book.condition }
-                        </Typography>
-                    </CardContent>
-                    <CardActions disableSpacing>
-                        <IconButton aria-label="add to favorites" className="like-item">No<FavoriteIcon /></IconButton>
-                        <IconButton aria-label="share"><ShareIcon /></IconButton>
-                        <IconButton aria-label="settings" className="expand"><MoreVertIcon /></IconButton>
-                    </CardActions>
-                </Card>
-            </Link>
+                <Link to={`/shop/show-book/${book._id}`} style={{ textDecoration: 'none' }}>
+                    <Card className={classes.root}>
+                        <CardHeader
+                            avatar={
+                                <Avatar aria-label="recipe" className={classes.avatar}>
+                                r
+                                </Avatar>
+                            }
+                            title="Seller: "
+                            subheader="timestamp: "
+                        />
+                        <CardMedia
+                            className={classes.media}
+                            image="https://commapress.co.uk/books/the-book-of-cairo/cairo-provisional-v3/image%2Fspan3"
+                            title={ book.title }
+                        />
+                        <CardContent>
+                            <Typography variant="body2" color="textSecondary" component="p">
+                                Title: {book.title}
+                            </Typography>
+                            <Typography variant="body2" color="textSecondary" component="p">
+                                Price: {book.price}
+                            </Typography>
+                            <Typography variant="body2" color="textSecondary" component="p">
+                                Condition: { book.condition }
+                            </Typography>
+                        </CardContent>
+                        <CardActions disableSpacing>
+                            <IconButton aria-label="add to favorites" className="like-item">No<FavoriteIcon /></IconButton>
+                            <IconButton aria-label="share"><ShareIcon /></IconButton>
+                            <IconButton aria-label="settings" className="expand"><MoreVertIcon /></IconButton>
+                        </CardActions>
+                    </Card>
+                </Link>
             
         </div>
     )

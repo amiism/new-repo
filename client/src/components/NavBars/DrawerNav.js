@@ -12,15 +12,10 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import ExitToApp from '@material-ui/icons/ExitToApp';
-import AddCircle from '@material-ui/icons/AddCircle';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
+
 import CenteredTabs from './MainNavBar2';
-import {Link} from 'react-router-dom';
+import SideButtons from './SideButtons';
+
 
 const drawerWidth = 240;
 
@@ -145,25 +140,8 @@ export default function MiniDrawer() {
           </IconButton>
         </div>
         <Divider />
-        <List>
-            <ListItem button key='AddChannel'>
-            <Link style={{ textDecoration: 'none' }} to="/main"><ListItemIcon><AddCircle /></ListItemIcon></Link>
-              <ListItemText primary='AddChannel' />
-            </ListItem>
-            {['CS2105', 'MA1521'].map((text, index) => (
-                <ListItem button key={text}>
-                <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-                <ListItemText primary={text} />
-                </ListItem>
-            ))}
-        </List>
-        <Divider />
-        <List>
-            <ListItem button key='logout'>
-              <ListItemIcon><ExitToApp /></ListItemIcon>
-              <ListItemText primary='logout' />
-            </ListItem>
-        </List>
+        
+        <SideButtons />
       </Drawer>
       <main className={classes.content}>
         <div className={classes.toolbar} /> 
@@ -171,3 +149,5 @@ export default function MiniDrawer() {
     </div>
   );
 }
+
+

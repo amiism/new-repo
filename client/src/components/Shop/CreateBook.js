@@ -1,18 +1,20 @@
 import React, { Component } from 'react';
+import { connect } from "react-redux";
 import { Link } from 'react-router-dom';
 import './Shop.css';
 import axios from 'axios';
+import {createBook} from '../../actions/books';
 
 class CreateBook extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
-      title: '',
-      price:'',
-      condition:'',
-      description:'',
-      availabiliy_status:'',
-      payment:'',
+      title: '', 
+      price:'', 
+      condition:'', 
+      description:'', 
+      availabiliy_status:'', 
+      payment:'', 
       shipping:''
     };
   }
@@ -34,6 +36,16 @@ class CreateBook extends Component {
       shipping: this.state.shipping
     };
 
+    this.props.createBook(data)
+    .then((recvdata)=>{
+      console.log(recvdata);
+      this.props.history.push('/shop');
+    })
+    .catch((e)=>{
+      console.log(e);
+    });
+
+    /*
     axios
       .post('http://localhost:5000/api/books', data)
       .then(res => {
@@ -51,6 +63,7 @@ class CreateBook extends Component {
       .catch(err => {
         console.log("Error in CreateBook!");
       })
+      */
   };
 
   render() {
@@ -59,11 +72,12 @@ class CreateBook extends Component {
         <div className="container">
           <div className="row">
             <div className="col-md-8 m-auto">
-              <br />
               <Link to="/shop" className="btn btn-outline-warning float-left">
                   Show BooK List
               </Link>
+              <br />
             </div>
+            
             <div className="col-md-8 m-auto">
               <p className="lead text-center">
                   Create new book
@@ -159,4 +173,4 @@ class CreateBook extends Component {
   }
 }
 
-export default CreateBook;
+export default connect(null, {createBook})(CreateBook);
