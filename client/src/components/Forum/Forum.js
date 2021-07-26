@@ -4,6 +4,7 @@ import "./Forum.css";
 
 class Forum extends React.Component {
   state = {
+    id: "",
     title: "",
     body: "",
     posts: [],
@@ -68,20 +69,32 @@ class Forum extends React.Component {
     if (!posts.length) return null;
 
     return posts.map((post, index) => (
-      <div key={index} classname="forum-post-display">
+      <div key={index} classname="forum-post__display">
         <h3>{post.title}</h3>
         <p>{post.body}</p>
       </div>
     ));
   };
 
+  deletePost = (id) => {
+    axios
+      .delete("/save/:id")
+      .then(() => {
+        console.log("Post has been deleted");
+        this.getForumpost();
+      })
+      .catch(() => {
+        console.log("Error deleting post");
+      });
+  };
+
   render() {
     console.log("State: ", this.state);
     return (
-      <div className="app">
-        <h2>Forum</h2>
-        <form onSubmit={this.submit}>
-          <div className="form-input">
+      <div className="forum">
+        <p>Forum</p>
+        <form className="forum-box" onSubmit={this.submit}>
+          <div className="forum-input">
             <input
               type="text"
               name="title"
@@ -90,7 +103,7 @@ class Forum extends React.Component {
               onChange={this.handleChange}
             />
           </div>
-          <div className="form-input">
+          <div className="forum-input">
             <textarea
               placeholder="body"
               name="body"
@@ -100,7 +113,9 @@ class Forum extends React.Component {
               onChange={this.handleChange}
             ></textarea>
           </div>
-          <button>submit</button>
+          <button classname="submit" value="Add New Post">
+            submit
+          </button>
         </form>
         <div classname="forum">{this.displayForumpost(this.state.posts)}</div>
       </div>

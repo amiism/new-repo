@@ -31,12 +31,16 @@ router.post("/save", (req, res) => {
   });
 });
 
-router.get("/name", (req, res) => {
-  const data = {
-    username: "brigitte",
-    age: 14,
-  };
-  res.json(data);
+router.delete("/save/:id", (req, res) => {
+  const id = req.params.id;
+  ForumPost.findByIdAndDelete(id, (error) => {
+    if (error) {
+      console.log("error in deleting!");
+      throw error;
+    } else {
+      console.log("post has been deleted");
+    }
+  });
 });
 
 module.exports = router;
