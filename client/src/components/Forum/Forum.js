@@ -94,18 +94,19 @@ class Forum extends React.Component {
       <div className="forum">
         <p>Forum</p>
         <form className="forum-box" onSubmit={this.submit}>
+          <p className="Forum-heading">What are you posting today?</p>
           <div className="forum-input">
             <input
               type="text"
               name="title"
-              placeholder="Enter Title"
+              placeholder="Title"
               value={this.state.title}
               onChange={this.handleChange}
             />
           </div>
           <div className="forum-input">
             <textarea
-              placeholder="body"
+              placeholder="Description"
               name="body"
               cols="30"
               rows="10"
@@ -113,11 +114,8 @@ class Forum extends React.Component {
               onChange={this.handleChange}
             ></textarea>
           </div>
-          <button classname="submit" value="Add New Post">
-            submit
-          </button>
+          <button classname="addnewpost">Add New Post</button>
         </form>
-        <div classname="forum">{this.displayForumpost(this.state.posts)}</div>
       </div>
     );
   }

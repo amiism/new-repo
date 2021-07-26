@@ -1,0 +1,57 @@
+.forum-box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 45%;
+  padding: 20px;
+  transform: translate(-50%, -50%);
+  background: rgb(31, 90, 100);
+  box-sizing: border-box;
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.6);
+  border-radius: 10px;
+}
+
+.forum-box h2 {
+  margin: 0 0 30px;
+  padding: 0;
+  color: #fff;
+  text-align: center;
+}
+
+.forum-box .forum-input {
+  position: relative;
+}
+
+.Forum-heading {
+  font: bold 17px Arial;
+  color: #ffffff;
+  font-size: 1.5em;
+}
+
+.addnewpost {
+  background-color: blueviolet;
+}
+
+button {
+  font: bold 17px Arial;
+  text-decoration: none;
+  margin: 10px;
+  cursor: pointer;
+  background-color: #8fcab4;
+  transition: all 0.4s ease-out;
+}
+
+.forum-input > textarea {
+  width: 80%;
+  margin: 10px;
+  background-color: cadetblue;
+}
+
+.forum-input > input {
+  width: 80%;
+  background-color: cadetblue;
+}
+
+.forum-input > ::placeholder {
+  color: black;
+}
