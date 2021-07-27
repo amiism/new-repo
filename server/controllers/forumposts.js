@@ -34,7 +34,7 @@ exports.createNewForumPost = (req, res) => {
 
     //create the forumpost using create mongoose create method
     ForumPost.create(req.body)
-    .then(forumpost => res.json({ msg: 'ForumPost added successfully' }))
+    .then(forumpost => res.json(forumpost))
     .catch(err => res.status(400).json({ error: 'Unable to add this forumpost' }));
 
 };
