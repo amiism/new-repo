@@ -20,16 +20,18 @@
   min-width: 100px;
   color: rgb(0, 0, 0);
 }
-.card-container{
+.card-container {
   padding: 10px;
 }
 
 /* BookList Styles */
-.list{
+.list {
+  font: bold 17px Arial;
   display: grid;
   grid-template-columns: 400px 400px;
   justify-content: center;
   padding: 20px;
+  margin-right: -400px;
 }
 .desc {
   height: 130px;
@@ -41,21 +43,94 @@
   font-weight: 400;
 }
 
-.desc h3, p {
+.desc h3,
+p {
   font-weight: 300;
 }
 
 .desc h3 {
-  color: #f1f8ff;
+  color: #ffffff;
   font-size: 1em;
   padding: 10px 0 10px 0;
 }
 
-Link{
-    color: rgb(0, 0, 0);
-    text-decoration: none;
+Link {
+  color: rgb(0, 0, 0);
+  text-decoration: none;
 }
 
-.btn{
-    color: rgb(0, 0, 0);
+.btn {
+  color: rgb(0, 0, 0);
+}
+
+.button-addnewlisting {
+  font: bold 17px Arial;
+  text-decoration: none;
+  background-color: #8fcab4;
+  color: #333333;
+  padding: 0px 6px 2px 6px;
+  border-top: 1px solid #cccccc;
+  border-right: 1px solid #333333;
+  border-bottom: 1px solid #333333;
+  border-left: 1px solid #cccccc;
+}
+
+.button-return {
+  font: bold 17px Arial;
+  text-decoration: none;
+  background-color: #8fcab4;
+  color: #333333;
+  padding: 0px 6px 2px 6px;
+  border-top: 1px solid #cccccc;
+  border-right: 1px solid #333333;
+  border-bottom: 1px solid #333333;
+  border-left: 1px solid #cccccc;
+  position: fixed;
+  right: 285px;
+  top: 495px;
+}
+
+.create-box {
+  position: absolute;
+  top: 67%;
+  left: 50%;
+  width: 600px;
+  padding: 0px;
+  transform: translate(-50%, -50%);
+  background: rgb(31, 90, 100);
+  box-sizing: border-box;
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.6);
+  border-radius: 10px;
+}
+
+.submit {
+  font: bold 17px Arial;
+  text-decoration: none;
+  margin: 10px;
+  cursor: pointer;
+  background-color: #8fcab4;
+  transition: all 0.4s ease-out;
+  margin-left: 250px;
+}
+
+.Shop-heading {
+  font: bold 17px Arial;
+  color: #ffffff;
+  font-size: 1.5em;
+}
+
+.create-box .form-group input {
+  width: 80%;
+  padding: 5px 0;
+  font-size: 14px;
+  color: #ffffff;
+  margin-bottom: 30px;
+  border: none;
+  border-bottom: 1px solid rgb(247, 243, 243);
+  outline: none;
+  background: transparent;
+}
+
+.list {
+  margin-left: -400px;
 }
